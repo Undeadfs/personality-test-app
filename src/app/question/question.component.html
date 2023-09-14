@@ -4,7 +4,7 @@
     <ul>
       <li *ngFor="let option of questions[currentStep].options; let i = index">
         <label>
-          <input type="radio" [value]="i" [checked]="selectedOption === i" (change)="selectOption(i)">
+          <input type="radio" [value]="i" [checked]="selectedOptions[currentStep] === i" (change)="selectOption(i)">
           {{ option.text }}
         </label>
       </li>
@@ -18,4 +18,3 @@
         <p>{{ totalScore }}</p>
     </div>
 </div>
-  

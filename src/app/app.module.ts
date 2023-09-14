@@ -7,12 +7,14 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { QuestionComponent } from './question/question.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ResultComponent } from './result/result.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    QuestionComponent
+    QuestionComponent,
+    ResultComponent
   ],
   imports: [
     BrowserModule,

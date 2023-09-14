@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from '../question.model';
 import { QuestionService } from '../question.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-question',
@@ -11,11 +12,13 @@ export class QuestionComponent implements OnInit {
 
   currentStep: number = 0;
   questions: Question[] = [];
-  selectedOption: number | null = null;
+  selectedOptions: number[] = [];
   totalScore: number = 0;
+  personalityTrait: string = '';
   showResult: boolean = false;
 
-  constructor(private questionService: QuestionService) { }
+  constructor(private questionService: QuestionService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.questionService.getQuestionsAndOptions().subscribe((data) => {
@@ -24,25 +27,44 @@ export class QuestionComponent implements OnInit {
   }
 
   selectOption(optionIndex: number): void {
-    this.selectedOption = optionIndex;
-  }
+    this.selectedOptions[this.currentStep] = optionIndex;  }
 
   previousStep(): void {
     if (this.currentStep > 0) {
+      // Retrieve the selected option for the previous step
+      const previousOption = this.selectedOptions[this.currentStep - 1];
+
+      if (previousOption !== undefined) {
+        const previousQuestion = this.questions[this.currentStep - 1];
+        const previousAnswer = previousQuestion.options[previousOption];
+
+        if (previousAnswer) {
+          this.totalScore -= previousAnswer.points; // Subtract the points of the previously selected option
+        }
+      }
+
       this.currentStep--;
+      console.log(this.totalScore)
     }
   }
 
   nextStep(): void {
-    if (this.selectedOption !== null) {
+    if (this.selectedOptions[this.currentStep] !== undefined) {
       const selectedQuestion = this.questions[this.currentStep];
-      const selectedAnswer = selectedQuestion.options[this.selectedOption];
+      const selectedAnswer = selectedQuestion.options[this.selectedOptions[this.currentStep]];
       this.totalScore += selectedAnswer.points;
-      
+      console.log(this.totalScore)
+
       if (this.currentStep < this.questions.length - 1) {
         this.currentStep++;
       } else {
-        this.showResult = true;
+        // Determine the personality trait based on the total score
+        if (this.totalScore >= 7) {
+          this.personalityTrait = 'Extrovert';
+        } else {
+          this.personalityTrait = 'Introvert';
+        }
+        this.router.navigate(['/result', this.personalityTrait]);
       }
     }
   }
