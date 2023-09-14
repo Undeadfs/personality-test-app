@@ -1,0 +1,49 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "text": "I prefer spending time with a large group of people rather than alone.",
+      "options": [
+        { "id": 1, "text": "Strongly Agree", "points": 3 },
+        { "id": 2, "text": "Somewhat Agree", "points": 2 },
+        { "id": 3, "text": "Strongly Disagree", "points": 1 }
+      ]
+    },
+    {
+      "id": 2,
+      "text": "I enjoy spending time alone to recharge.",
+      "options": [
+        { "id": 4, "text": "Strongly Agree", "points": 3 },
+        { "id": 5, "text": "Somewhat Agree", "points": 2 },
+        { "id": 6, "text": "Strongly Disagree", "points": 1 }
+      ]
+    },
+    {
+      "id": 3,
+      "text": "I find it easy to make new friends.",
+      "options": [
+        { "id": 7, "text": "Strongly Agree", "points": 3 },
+        { "id": 8, "text": "Somewhat Agree", "points": 2 },
+        { "id": 9, "text": "Strongly Disagree", "points": 1 }
+      ]
+    },
+    {
+      "id": 4,
+      "text": "I often seek out new experiences and adventures.",
+      "options": [
+        { "id": 10, "text": "Strongly Agree", "points": 3 },
+        { "id": 11, "text": "Somewhat Agree", "points": 2 },
+        { "id": 12, "text": "Strongly Disagree", "points": 1 }
+      ]
+    },
+    {
+      "id": 5,
+      "text": "I value deep, meaningful connections with a few close friends.",
+      "options": [
+        { "id": 13, "text": "Strongly Agree", "points": 3 },
+        { "id": 14, "text": "Somewhat Agree", "points": 2 },
+        { "id": 15, "text": "Strongly Disagree", "points": 1 }
+      ]
+    }
+  ]
+}
