@@ -2,11 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { Question } from '../question.model';
 import { QuestionService } from '../question.service';
 import { Router } from '@angular/router';
+import { trigger, transition, style, animate } from '@angular/animations';  
 
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
-  styleUrls: ['./question.component.scss']
+  styleUrls: ['./question.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('300ms', style({ opacity: 1 })),
+      ]),
+      transition(':leave', [
+        animate('300ms', style({ opacity: 0 })),
+      ]),
+    ]),
+  ],
 })
 export class QuestionComponent implements OnInit {
 

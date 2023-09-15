@@ -1,13 +1,13 @@
 <div class="question-container">
   <h2 class="question-title">Question {{ currentStep + 1 }}</h2>
-  <p class="question-text">{{ questions[currentStep].text }}</p>
+  <p class="question-text" >{{ questions[currentStep].text }}</p>
   <div class="options-list">
-    <div *ngFor="let option of questions[currentStep].options; let i = index" class="option-item" (click)="selectOption(i)">
+    <div *ngFor="let option of questions[currentStep]?.options; let i = index" class="option-item" (click)="selectOption(i)">
       <input
         type="text"
-        [ngModel]="selectedOptions[currentStep] === i ? option.text : ''"
+        [ngModel]="option.text"
         readonly
-        id="option{{ i }}"
+        [@fadeInOut]
       />
     </div>
   </div>
