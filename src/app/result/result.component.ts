@@ -13,7 +13,6 @@ export class ResultComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // Retrieve the personalityTrait parameter from the route
     this.route.params.subscribe((params) => {
       this.personalityTrait = params['personalityTrait'];
     });

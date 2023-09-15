@@ -27,11 +27,10 @@ export class QuestionComponent implements OnInit {
   }
 
   selectOption(optionIndex: number): void {
-    this.selectedOptions[this.currentStep] = optionIndex;  }
+    this.selectedOptions[this.currentStep] = optionIndex;}
 
   previousStep(): void {
     if (this.currentStep > 0) {
-      // Retrieve the selected option for the previous step
       const previousOption = this.selectedOptions[this.currentStep - 1];
 
       if (previousOption !== undefined) {
@@ -39,7 +38,7 @@ export class QuestionComponent implements OnInit {
         const previousAnswer = previousQuestion.options[previousOption];
 
         if (previousAnswer) {
-          this.totalScore -= previousAnswer.points; // Subtract the points of the previously selected option
+          this.totalScore -= previousAnswer.points;
         }
       }
 
@@ -58,7 +57,6 @@ export class QuestionComponent implements OnInit {
       if (this.currentStep < this.questions.length - 1) {
         this.currentStep++;
       } else {
-        // Determine the personality trait based on the total score
         if (this.totalScore >= 7) {
           this.personalityTrait = 'Extrovert';
         } else {

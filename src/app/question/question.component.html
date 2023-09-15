@@ -1,20 +1,18 @@
 <div class="question-container">
-    <h2>Question {{ currentStep + 1 }}</h2>
-    <p>{{ questions[currentStep].text }}</p>
-    <ul>
-      <li *ngFor="let option of questions[currentStep].options; let i = index">
-        <label>
-          <input type="radio" [value]="i" [checked]="selectedOptions[currentStep] === i" (change)="selectOption(i)">
-          {{ option.text }}
-        </label>
-      </li>
-    </ul>
-    <div class="buttons">
-      <button [disabled]="currentStep === 0" (click)="previousStep()">Previous</button>
-      <button [disabled]="showResult" (click)="nextStep()">{{ currentStep === questions.length - 1 ? 'Submit' : 'Next' }}</button>
+  <h2 class="question-title">Question {{ currentStep + 1 }}</h2>
+  <p class="question-text">{{ questions[currentStep].text }}</p>
+  <div class="options-list">
+    <div *ngFor="let option of questions[currentStep].options; let i = index" class="option-item" (click)="selectOption(i)">
+      <input
+        type="text"
+        [ngModel]="selectedOptions[currentStep] === i ? option.text : ''"
+        readonly
+        id="option{{ i }}"
+      />
     </div>
-    <div class="total-score-container" *ngIf="showResult">
-        <h2>Your Total Score</h2>
-        <p>{{ totalScore }}</p>
-    </div>
+  </div>
+  <div class="button-container">
+    <button class="previous-button" [disabled]="currentStep === 0" (click)="previousStep()">Previous</button>
+    <button class="next-button" [disabled]="showResult" (click)="nextStep()">{{ currentStep === questions.length - 1 ? 'Submit' : 'Next' }}</button>
+  </div>
 </div>
